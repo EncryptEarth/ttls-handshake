@@ -1,10 +1,10 @@
+import sys, os
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
 import hashlib
 
-# === Import sealed functions (from compiled .pyd via sealed.py) ===
-import hashlib
-
-# === Import sealed functions (from compiled .pyd via sealed.py) ===
-from ttls_core.sealed import (
+# === Import sealed functions (compiled .pyd via sealed.py) ===
+from sealed import (
     trimac_tag,
     sample_trimac_input,
     litefire_encrypt,
@@ -60,3 +60,7 @@ def ttls_receive(my_private: int, their_pub: int, base: int, prime: int, packet:
     if not fdsig_verify(decrypted, packet['signature'], key_material):
         raise ValueError("FDSig verification failed")
     return decrypted
+
+# === Quick test ===
+if __name__ == "__main__":
+    print("✅ TTLS core loaded and ready")

@@ -1,4 +1,4 @@
-from .sealed_crypto import (
+from sealed_crypto import (
     trimac_tag,
     sample_trimac_input,
     litefire_encrypt,
